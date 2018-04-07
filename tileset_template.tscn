@@ -1,0 +1,166 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://tileset.png" type="Texture" id=1]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="wall_top_ccoc" type="Sprite" parent="." index="0"]
+
+position = Vector2( -20, -20 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 136, 0, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="wall_top_cocc" type="Sprite" parent="." index="1"]
+
+position = Vector2( 0, -20 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 153, 0, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="wall_top_coco" type="Sprite" parent="." index="2"]
+
+position = Vector2( 20, -20 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 170, 0, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="wall_top_ccco" type="Sprite" parent="." index="3"]
+
+position = Vector2( 40, -20 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 187, 0, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="wall_top_cooc" type="Sprite" parent="." index="4"]
+
+position = Vector2( 60, -20 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 204, 0, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="wall_top_ccoo" type="Sprite" parent="." index="5"]
+
+position = Vector2( 80, -20 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 221, 0, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="wall_top_oooc" type="Sprite" parent="." index="6"]
+
+position = Vector2( 100, -20 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 238, 0, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="wall_top_ooco" type="Sprite" parent="." index="7"]
+
+position = Vector2( 120, -20 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 255, 0, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="wall_top_occc" type="Sprite" parent="." index="8"]
+
+position = Vector2( -20, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 136, 17, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="wall_top_cccc" type="Sprite" parent="." index="9"]
+
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 153, 17, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="wall_top_oooo" type="Sprite" parent="." index="10"]
+
+position = Vector2( 20, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 170, 17, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="wall_top_ococ" type="Sprite" parent="." index="11"]
+
+position = Vector2( 40, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 187, 17, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="wall_top_oocc" type="Sprite" parent="." index="12"]
+
+position = Vector2( 60, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 204, 17, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="wall_top_occo" type="Sprite" parent="." index="13"]
+
+position = Vector2( 80, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 221, 17, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="wall_top_ocoo" type="Sprite" parent="." index="14"]
+
+position = Vector2( 100, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 238, 17, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="wall_top_cooo" type="Sprite" parent="." index="15"]
+
+position = Vector2( 120, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 255, 17, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="wall_bottom_left" type="Sprite" parent="." index="16"]
+
+position = Vector2( -20, 20 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 136, 68, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="wall_bottom_middle" type="Sprite" parent="." index="17"]
+
+position = Vector2( 0, 20 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 153, 68, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="wall_bottom_right" type="Sprite" parent="." index="18"]
+
+position = Vector2( 20, 20 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 170, 68, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="wall_bottom_both" type="Sprite" parent="." index="19"]
+
+position = Vector2( 40, 20 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 187, 68, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+
