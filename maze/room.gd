@@ -1,5 +1,4 @@
 var openings = {}
-var neighbors = {}
 
 func _init():
 	pass
@@ -7,6 +6,8 @@ func _init():
 func connected():
 	return self.openings.values().has(true)
 	
-func addNeighbor(direction, neighbor):
-	self.openings[direction] = false
-	self.neighbors[direction] = neighbor
+func open(direction):
+	self.openings[direction] = true
+	
+func is_open(direction):
+	return self.openings[direction] if self.openings.has(direction) else false

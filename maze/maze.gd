@@ -1,6 +1,6 @@
 var Room = load("res://maze/room.gd")
 enum Directions { UP, RIGHT, DOWN, LEFT }
-#enum Opposites { UP = DOWN, RIGHT = LEFT, DOWN = UP, LEFT = RIGHT }
+enum Opposites { UP = DOWN, RIGHT = LEFT, DOWN = UP, LEFT = RIGHT }
 enum Dx { UP = 0, RIGHT = 1, DOWN = 0, LEFT = -1 }
 enum Dy { UP = -1, RIGHT = 0, DOWN = 1, LEFT = 0 }
 
@@ -8,36 +8,56 @@ var rooms = {}
 var width
 var height
 
-func _init(width, height):		
+func _init(width, height):
 	self.width = width
 	self.height = height
 	initialize_rooms()
-	add_neighbors()
 	
 func initialize_rooms():
 	for x in range(self.width):
 		for y in range(self.height):
 			var coordinates = Vector2(x, y)
 			self.rooms[coordinates] = Room.new()
-			
 
-func add_neighbors():
-	for x in range(self.width):
-		for y in range(self.height):
-			var coordinates = Vector2(x, y)
-			var room = self.rooms[coordinates]
-			
-			for direction in Directions:
-				var delta = Vector2(Dx[direction], Dy[direction])
-				var neighbor = self.rooms[coordinates + delta] if self.rooms.has(coordinates + delta) else null
-				room.addNeighbor(Directions[direction], neighbor)
+func connect(location, direction):
+	var room = self.room(location)
+	var connected_room = self.neighbor(location, direction)
+	room.open(direction)
+	connected_room.open(Opposites[direction])
 
-func connect(room, direction):
-	var opposite = (direction + 2) % 4
-	var connected_room = room.neighbors[direction]
-	room.openings[direction] = true
-	connected_room.openings[opposite] = true
+func neighbor(location, direction):
+	var delta = self.delta(location, direction)
+	return self.room(delta)
+
+func delta(location, direction):
+	return Vector2(location.x + Dx[direction], location.y + Dy[direction])
+
+func room(location):
+	if not self.valid(location):
+		return null
 	
+	return self.rooms[location]
+
+func valid(location):
+	if location.x < 0 or location.x >= width:
+		return false
+	
+	if location.y < 0 or location.y >= height:
+		return false
+	
+	return true
+
+func directions(location):
+	var directions = []
+	
+	for direction in Directions:
+		var neighbor = self.neighbor(location, direction)
+		
+		if neighbor != null:
+			directions.append(direction)
+	
+	return directions
+
 func output():
 	var result = ""
 	

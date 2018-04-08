@@ -7,27 +7,34 @@ var RC = load("res://maze/recursive-backtracker.gd")
 # var b = "textvar"
 
 func _ready():
-	var maze = Maze.new(15, 10);
-	var rc = RC.new(maze, 0, 0);
-	rc.generate();
+	build_level()
+	#render_tiles()
+
+func build_level():
+	var maze = Maze.new(2, 2)
+	var rc = RC.new(maze, 0, 0)
+	rc.generate()
+	maze.output()
+	
+func render_tiles(maze):
 	var map = get_node("TileMap")
-	var tileset = map.get_tileset();
+	var tileset = map.get_tileset()
 	
 	for y in range(maze.height):
 		for x in range(maze.width):
 			var coords = Vector2(x, y)
-			var room = maze.rooms[coords];
-			var up = room.neighbors[0];
-			var left = room.neighbors[3];
+			var room = maze.rooms[coords]
+			var up = maze.neighbor(coords, 'UP')
+			var left = maze.neighbor(coords, 'LEFT')
 			
 			var tile = "wall_top_"
 			
-			if up == null or up.openings[3] == true:
+			if up == null or up.is_open('UP') == true:
 				tile += "c"
 			else:
 				tile += "o"
 				
-			if room.openings[0] == true:
+			if room.is_open('UP') == true:
 				tile += "c"
 			else:
 				tile += "o"
@@ -54,8 +61,3 @@ func _ready():
 			
 			if room.openings[3] == false:
 				map.set_cell(x * 2, (y * 2) + 1, the_tile)
-
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass

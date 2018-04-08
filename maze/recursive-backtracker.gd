@@ -10,39 +10,33 @@ func _init(maze, x, y):
 	
 func generate():
 	randomize()
-	var starting_room = self.maze.rooms[Vector2(self.x, self.y)]
-	self.stack.push_back(starting_room)
+	self.stack.push_back(Vector2(self.x, self.y))
 	
 	while self.stack.size() > 0:
-		var room = self.stack.back()
-		var direction = choose_random_direction(room)
+		var location = self.stack.back()
+		var direction = choose_random_direction(location)
 		
 		if direction == null:
 			self.stack.pop_back()
 			continue
 			
-		self.maze.connect(room, direction)
-		room = room.neighbors[direction]
-		self.stack.push_back(room)
-	
-	self.maze.output()
+		self.maze.connect(location, direction)
+		location = self.maze.delta(location, direction)
+		self.stack.push_back(location)
 
-func choose_random_direction(room):
-	var directions = possible_directions(room)
+func choose_random_direction(location):
+	var directions = self.maze.directions(location)
+	var unvisited_directions = [];
 	
-	if directions.size() == 0:
+	for i in range(directions.size()):
+		var direction = directions[i]
+		var neighbor = self.maze.neighbor(location, direction)
+		
+		if not neighbor.connected():
+			unvisited_directions.append(direction)
+	
+	if unvisited_directions.size() == 0:
 		return null
 		
-	var random_index = randi() % directions.size()
-	return directions[random_index]
-
-func possible_directions(room):
-	var directions = []
-	
-	for direction in room.neighbors.keys():
-		var neighbor = room.neighbors[direction]
-		
-		if neighbor != null and not neighbor.connected():
-			directions.append(direction)
-	
-	return directions
+	var random_index = randi() % unvisited_directions.size()
+	return unvisited_directions[random_index]
