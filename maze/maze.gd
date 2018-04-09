@@ -1,8 +1,13 @@
 var Room = load("res://maze/room.gd")
-enum Directions { UP, RIGHT, DOWN, LEFT }
-enum Opposites { UP = DOWN, RIGHT = LEFT, DOWN = UP, LEFT = RIGHT }
-enum Dx { UP = 0, RIGHT = 1, DOWN = 0, LEFT = -1 }
-enum Dy { UP = -1, RIGHT = 0, DOWN = 1, LEFT = 0 }
+
+const UP = "UP"
+const RIGHT = "RIGHT"
+const DOWN = "DOWN"
+const LEFT = "LEFT"
+const Directions = [UP, RIGHT, DOWN, LEFT]
+const Dx = { UP = 0, RIGHT = 1, DOWN = 0, LEFT = -1 }
+const Dy = { UP = -1, RIGHT = 0, DOWN = 1, LEFT = 0 }
+const Opposites = { UP = DOWN, RIGHT = LEFT, DOWN = UP, LEFT = RIGHT }
 
 var rooms = {}
 var width
@@ -71,7 +76,7 @@ func output():
 				var room = self.rooms[Vector2(x, y)]
 				var openings = room.openings
 				
-				result += " " if Directions.DOWN in room.openings and room.openings[Directions.DOWN] else "_"
-				result += " " if Directions.RIGHT in room.openings and room.openings[Directions.RIGHT] else "|"
+				result += " " if room.is_open(DOWN) else "_"
+				result += " " if room.is_open(RIGHT) else "|"
 	
 	print(result)
