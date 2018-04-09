@@ -18,27 +18,27 @@ func render_tiles(maze):
 		for x in range(maze.width):
 			var location = Vector2(x, y)
 			var room = maze.rooms[location]
-			var up = maze.neighbor(location, 'UP')
-			var left = maze.neighbor(location, 'LEFT')
+			var up = maze.neighbor(location, Maze.UP)
+			var left = maze.neighbor(location, Maze.LEFT)
 			
 			var tile = "wall_top_"
 			
-			if up == null or up.is_open('LEFT') == true:
+			if up == null or up.is_open(Maze.LEFT) == true:
 				tile += "c"
 			else:
 				tile += "o"
 				
-			if room.is_open('UP') == true:
+			if room.is_open(Maze.UP) == true:
 				tile += "c"
 			else:
 				tile += "o"
 			
-			if room.is_open("LEFT") == true:
+			if room.is_open(Maze.LEFT) == true:
 				tile += "c"
 			else:
 				tile += "o"
 				
-			if left == null or left.is_open("UP") == true:
+			if left == null or left.is_open(Maze.UP) == true:
 				tile += "c"
 			else:
 				tile += "o"
@@ -46,12 +46,12 @@ func render_tiles(maze):
 			var the_tile = tileset.find_tile_by_name(tile)
 			map.set_cell(x * 2, y * 2, the_tile)
 			
-			the_tile = tileset.find_tile_by_name("wall_top_coco");
+			the_tile = tileset.find_tile_by_name("wall_top_coco")
 			
-			if room.is_open("UP") == false:
+			if room.is_open(Maze.UP) == false:
 				map.set_cell((x * 2) + 1, y * 2, the_tile)
 				
-			the_tile = tileset.find_tile_by_name("wall_top_ococ");
+			the_tile = tileset.find_tile_by_name("wall_top_ococ")
 			
-			if room.is_open("LEFT") == false:
+			if room.is_open(Maze.LEFT) == false:
 				map.set_cell(x * 2, (y * 2) + 1, the_tile)

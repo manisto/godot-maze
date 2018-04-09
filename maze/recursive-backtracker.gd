@@ -25,18 +25,16 @@ func generate():
 		self.stack.push_back(location)
 
 func choose_random_direction(location):
-	var directions = self.maze.directions(location)
-	var unvisited_directions = [];
+	var directions = []
 	
-	for i in range(directions.size()):
-		var direction = directions[i]
+	for direction in maze.directions(location):
 		var neighbor = self.maze.neighbor(location, direction)
 		
 		if not neighbor.connected():
-			unvisited_directions.append(direction)
+			directions.append(direction)
 	
-	if unvisited_directions.size() == 0:
+	if directions.size() == 0:
 		return null
 		
-	var random_index = randi() % unvisited_directions.size()
-	return unvisited_directions[random_index]
+	var random_index = randi() % directions.size()
+	return directions[random_index]
