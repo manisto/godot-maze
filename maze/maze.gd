@@ -73,7 +73,7 @@ func output():
 			result += "\n|"
 			
 			for x in range(self.width):
-				var room = self.rooms[Vector2(x, y)]
+				var room = self.room(Vector2(x, y))
 				var openings = room.openings
 				
 				result += " " if room.is_open(DOWN) else "_"
