@@ -7,7 +7,9 @@
 custom_solver_bias = 0.0
 extents = Vector2( 8, 8 )
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" index="0"]
+
+editor/display_folded = true
 
 [node name="wall_top_ccoc" type="Sprite" parent="." index="0"]
 
@@ -16,7 +18,7 @@ position = Vector2( -20, -20 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 136, 0, 16, 16 )
-_sections_unfolded = [ "Region" ]
+_sections_unfolded = [ "Region", "Transform", "Z Index" ]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="wall_top_ccoc" index="0"]
 
