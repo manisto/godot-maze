@@ -10,7 +10,7 @@ config_version=3
 
 [application]
 
-config/name="your-personal-nightmare"
+config/name="godot-maze"
 run/main_scene="res://level.tscn"
 config/icon="res://icon.png"
 
