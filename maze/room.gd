@@ -1,13 +1,13 @@
-var openings = {}
+var openings = 0
 
 func _init():
 	pass
 	
 func connected():
-	return self.openings.values().has(true)
+	return self.openings > 0
 	
 func open(direction):
-	self.openings[direction] = true
+	self.openings |= direction
 	
 func is_open(direction):
-	return self.openings[direction] if self.openings.has(direction) else false
+	return self.openings & direction > 0
